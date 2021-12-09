@@ -14,3 +14,16 @@ print("Now I will prove to you that I can count to any number you want.")
 for h in range(int(input())+1):
     print(str(h) + '!')
 print("Completed, have a nice day!")
+print("Let's test your programming knowledge.")
+print("Why do we use methods?")
+print("1. To repeat a statement multiple times.")
+print("2. To decompose a program into several small subroutines.")
+print("3. To determine the execution time of a program.")
+print("4. To interrupt the execution of a program.")
+b = ()
+while b != 2:
+    b = int(input())
+    if b == 2:
+        print("Congratulations, have a nice day!")
+    else:
+        print("Please, try again.")
