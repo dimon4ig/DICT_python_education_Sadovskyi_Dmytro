@@ -12,13 +12,13 @@ number = int(input("Напишите, сколько чашек кофе вам 
 water = number * 200
 milk = number * 50
 coffee_beans = number * 15
-if water * 2 <= count_water and milk * 2 <= count_milk and coffee_beans * 2 <= count_coffee_beans:
-      N = round(min(count_water / 200, count_milk / 50, count_coffee_beans / 15) - number)
-      print("Да, я могу приготовить такое количество кофе (даже больше на", N, "больше)")
+if water + 200 <= count_water and milk + 50 <= count_milk and coffee_beans + 15 <= count_coffee_beans:
+    N = min(count_water // 200, count_milk // 50, count_coffee_beans // 15) - number
+    print("Да, я могу приготовить такое количество кофе (даже на", N, "чашек больше)")
 elif count_water >= water and count_milk >= milk and count_coffee_beans >= coffee_beans:
-      print("Да, я могу приготовить такое количество кофе")
+    print("Да, я могу приготовить такое количество кофе")
 else:
-      N = round(min(count_water / 200, count_milk / 50, count_coffee_beans / 15))
-      print("Нет, я могу приготовить только", N, "чашек кофе")
+    N = min(count_water // 200, count_milk // 50, count_coffee_beans // 15)
+    print("Нет, я могу приготовить только", N, "чашек кофе")
 print("На", number, "чашек кофе понядобится:\n" + str(water) + " мл воды\n" + str(milk) + " мл молока\n" +
       str(coffee_beans) + " кофейных зерен")
