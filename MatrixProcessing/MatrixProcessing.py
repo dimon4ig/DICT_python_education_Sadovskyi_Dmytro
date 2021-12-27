@@ -11,11 +11,6 @@ def mat():
     c = [[int(k) for k in input().split(" ")] for t in range(int(str_m2))]
 
 
-def res():
-    for i in range(int(str_m1)):
-        print(" ".join(map(str, d[i])))
-
-
 def summa():
     global d, e
     mat()
@@ -33,4 +28,22 @@ def summa():
         print("ERROR")
 
 
-summa()
+def res():
+    for i in range(int(str_m1)):
+        print(" ".join(map(str, d[i])))
+
+
+def constant():
+    global str_m1, stl_m1, b, e, d
+    str_m1, stl_m1 = input("Введите количество строк и столбцов матрицы: ").split(" ")
+    b = [[int(k) for k in input().split(" ")] for t in range(int(str_m1))]
+    cons = int(input("Введите константу: "))
+    for i in range(int(str_m1)):
+        for j in range(int(stl_m1)):
+            e.append(b[i][j] * cons)
+        d.append(e)
+        e = []
+    res()
+
+
+constant()
