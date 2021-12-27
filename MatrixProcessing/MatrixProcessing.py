@@ -1,3 +1,5 @@
+from math import ceil
+
 str_m1 = str_m2 = stl_m1 = stl_m2 = s = 0
 e = []
 b = c = d = []
@@ -67,10 +69,87 @@ def mat_x():
         print("Операция не может быть выполнена.")
 
 
+def res_s():
+    global b
+    print("Результат:")
+    for i in range(int(str_m1)):
+        print(' '.join(map(str, (b[i]))))
+    b = []
+
+
+def t_mat():
+    global str_m1, stl_m1, b, e, d
+    str_m1, stl_m1 = input("Введите количество строк и столбцов матрицы:").split(" ")
+    b = [[int(k) for k in input().split(" ")] for _ in range(int(str_m1))]
+
+
+def t_mat_side():
+    global str_m1, stl_m1, b
+    t_mat()
+    l = int(str_m1) - 1
+    for i in range(l + 1):
+        for j in range(l + 1):
+            if i > l - j:
+                b[i][j], b[l - j][l - i] = b[l - j][l - i], b[i][j]
+    res_s()
+
+
+def t_mat_main():
+    global str_m1, stl_m1, b
+    t_mat()
+    l = int(str_m1)
+    for i in range(l):
+        for j in range(l):
+            if i > j:
+                b[i][j], b[j][i] = b[j][i], b[i][j]
+    res_s()
+
+
+def t_mat_ver():
+    global str_m1, stl_m1, b
+    t_mat()
+    l = int(str_m1) - 1
+    f = ceil(l / 2)
+    for i in range(l + 1):
+        for j in range(f):
+            b[i][j], b[i][l - j] = b[i][l - j], b[i][j]
+    res_s()
+
+
+def t_mat_hor():
+    global str_m1, stl_m1, b
+    t_mat()
+    lo = int(str_m1) - 1
+    f = ceil(lo / 2)
+    for i in range(f):
+        for j in range(lo + 1):
+            b[i][j], b[lo - i][j] = b[lo - i][j], b[i][j]
+    res_s()
+
+
+def t_mat_info():
+    print("1.Главная диагональ\n"
+          "2. Боковая диагональ\n"
+          "3. Вертикальная линия\n"
+          "4. Горизонтальная линия\n")
+    choice = int(input("Ваш выбор: "))
+    if choice == 1:
+        t_mat_main()
+    elif choice == 2:
+        t_mat_side()
+    elif choice == 3:
+        t_mat_ver()
+    elif choice == 4:
+        t_mat_hor()
+    else:
+        print("Операция не может быть выполнена.")
+
+
 while answer != 0:
     answer = int(input("1. Сложить матрицы\n"
-                       "2.Умножить матрицу на константу\n"
+                       "2. Умножить матрицу на константу\n"
                        "3. Умножить матрицы\n"
+                       "4. Матрица транспонирования\n"
                        "0. Выход\n"
                        "Ваш выбор:"))
     if answer == 0:
@@ -82,3 +161,5 @@ while answer != 0:
         constant()
     elif answer == 3:
         mat_x()
+    elif answer == 4:
+        t_mat_info()
