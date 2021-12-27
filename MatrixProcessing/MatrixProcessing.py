@@ -144,12 +144,24 @@ def t_mat_info():
     else:
         print("Операция не может быть выполнена.")
 
+def minor(h, i, u):
+    return [k[:u] + k[u + 1:] for k in (h[:i] + h[i + 1:])]
+
+def determ(l):
+    if len(l) == 2:
+        return l[0][0] * l[1][1] - l[0][1] * l[1][0]
+    det = 0
+    for i in range(len(l)):
+        det += ((-1) ** i) * l[0][i] * determ(minor(l, 0, i))
+    return det
+
 
 while answer != 0:
     answer = int(input("1. Сложить матрицы\n"
                        "2. Умножить матрицу на константу\n"
                        "3. Умножить матрицы\n"
                        "4. Матрица транспонирования\n"
+                       "5. Вычислить определитель\n"
                        "0. Выход\n"
                        "Ваш выбор:"))
     if answer == 0:
@@ -163,3 +175,6 @@ while answer != 0:
         mat_x()
     elif answer == 4:
         t_mat_info()
+    elif answer == 5:
+        t_mat()
+        print("Результат: " + str(determ(b)))
